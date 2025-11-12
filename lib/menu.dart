@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:street_kicks/left_drawer.dart';
+import 'package:street_kicks/product_card.dart';
 
-class ItemHomepage {
- final String name;
- final IconData icon;
- final Color color;
 
- ItemHomepage(this.name, this.icon, this.color);
-}
+class MyHomePage extends StatelessWidget {
+    MyHomePage({super.key});
 
-class MyHomePage extends StatelessWidget {  
-  MyHomePage({super.key}); //sudah ada pada code sebelumnya
+    final String nama = "Abelyvia Tori Rebecca Silalahi";
+    final String npm = "2406496391";
+    final String kelas = "F";
 
-    final String nama = "Abelyvia Tori Rebecca Silalahi";//nama
-    final String npm = "2406496391"; //npm
-    final String kelas = "F"; //kelas
-    
     final List<ItemHomepage> items = [
-      ItemHomepage("See StreetKicks", Icons.shopping_bag, Colors.blue),
-      ItemHomepage("Add Product", Icons.add, Colors.green),
-      ItemHomepage("Logout", Icons.logout, Colors.red),
+      ItemHomepage("All Products", Icons.shopping_bag, Colors.blue),
+      ItemHomepage("My Products", Icons.shop, Colors.green),
+      ItemHomepage("Create Product", Icons.add, Colors.red),
     ];
-    
-      @override
+
+    @override
     Widget build(BuildContext context) {
     // Scaffold menyediakan struktur dasar halaman dengan AppBar dan body.
     return Scaffold(
@@ -31,14 +26,15 @@ class MyHomePage extends StatelessWidget {
         title: const Text(
           'StreetKicks',
           style: TextStyle(
-            color: Colors.white,
+            color: Color.fromARGB(255, 255, 255, 0),
             fontWeight: FontWeight.bold,
           ),
         ),
         // Warna latar belakang AppBar diambil dari skema warna tema aplikasi.
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      // Body halaman dengan padding di sekelilingnya.
+      drawer: LeftDrawer(),
+       // Body halaman dengan padding di sekelilingnya.
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         // Menyusun widget secara vertikal dalam sebuah kolom.
@@ -68,7 +64,7 @@ class MyHomePage extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(top: 16.0),
                     child: Text(
-                      'Welcome to StreetKicks',
+                      'Welcome To StreetKicks!',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
@@ -98,7 +94,7 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
     );
-  }
+    }
 }
 
 class InfoCard extends StatelessWidget {
@@ -134,57 +130,11 @@ class InfoCard extends StatelessWidget {
   }
 }
 
+class ItemHomepage {
+ final String name;
+ final IconData icon;
+ final Color color;
 
-class ItemCard extends StatelessWidget {
-  // Menampilkan kartu dengan ikon dan nama.
-
-  final ItemHomepage item; 
-
-  const ItemCard(this.item, {super.key}); 
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      // Menentukan warna latar belakang dari tema aplikasi.
-      color: item.color,
-      // Membuat sudut kartu melengkung.
-      borderRadius: BorderRadius.circular(12),
-
-      child: InkWell(
-        // Aksi ketika kartu ditekan.
-        onTap: () {
-          // Menampilkan pesan SnackBar saat kartu ditekan.
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
-            );
-        },
-        // Container untuk menyimpan Icon dan Text
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              // Menyusun ikon dan teks di tengah kartu.
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
+ ItemHomepage(this.name, this.icon, this.color);
 }
+
