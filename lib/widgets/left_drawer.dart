@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:street_kicks/menu.dart';
-import 'package:street_kicks/newlist_form.dart';
+import 'package:street_kicks/screens/menu.dart';
+import 'package:street_kicks/screens/productlist_form.dart';
+import 'package:street_kicks/screens/product_list_entry.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -57,6 +58,17 @@ class LeftDrawer extends StatelessWidget {
               // setelah halaman ProductFormPage sudah dibuat.
               // */
             },
+          ),
+          ListTile(
+              leading: const Icon(Icons.add_reaction_rounded),
+              title: const Text('Products List'),
+              onTap: () {
+                  // Route to news list page
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProductEntryListPage()),
+                  );
+              },
           ),
         ],
       ),

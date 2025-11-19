@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:street_kicks/left_drawer.dart';
-import 'package:street_kicks/product_card.dart';
+import 'package:street_kicks/widgets/left_drawer.dart';
+import 'package:street_kicks/screens/product_card.dart';
 
+class ItemHomepage {
+ final String name;
+ final IconData icon;
+ final Color color;
+
+ ItemHomepage(this.name, this.icon, this.color);
+}
 
 class MyHomePage extends StatelessWidget {
     MyHomePage({super.key});
@@ -12,8 +19,8 @@ class MyHomePage extends StatelessWidget {
 
     final List<ItemHomepage> items = [
       ItemHomepage("All Products", Icons.shopping_bag, Colors.blue),
-      ItemHomepage("My Products", Icons.shop, Colors.green),
-      ItemHomepage("Create Product", Icons.add, Colors.red),
+      ItemHomepage("My Products", Icons.shop, const Color.fromARGB(255, 0, 252, 8)),
+      ItemHomepage("Create Product", Icons.add, const Color.fromARGB(255, 255, 17, 0)),
     ];
 
     @override
@@ -130,11 +137,4 @@ class InfoCard extends StatelessWidget {
   }
 }
 
-class ItemHomepage {
- final String name;
- final IconData icon;
- final Color color;
-
- ItemHomepage(this.name, this.icon, this.color);
-}
 
